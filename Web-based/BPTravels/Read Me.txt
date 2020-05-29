@@ -1,0 +1,1 @@
+It connects to the BPTravel website, and logs in to the portal with a defined username and password.

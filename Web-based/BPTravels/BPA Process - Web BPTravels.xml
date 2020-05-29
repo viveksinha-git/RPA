@@ -1,0 +1,31 @@
+﻿<process name="Web BPTravels" version="1.0" bpversion="6.7.1.21315" narrative="" byrefcollection="true" preferredid="f08a6071-ac89-4a5f-b5b4-260dd67b234a">
+  <view>
+    <camerax>0</camerax>
+    <cameray>0</cameray>
+    <zoom version="2">1.25</zoom>
+  </view>
+  <preconditions />
+  <endpoint narrative="" />
+  <stage stageid="905a7684-3be6-4b42-b3b3-4fb88c18837a" name="Start" type="Start">
+    <display x="15" y="-105" />
+    <onsuccess>c246987f-23f6-401e-bd92-e663636fc0b5</onsuccess>
+  </stage>
+  <stage stageid="1ae9b42e-78fb-48f0-b4f2-4b030a079690" name="End" type="End">
+    <display x="15" y="90" />
+  </stage>
+  <stage stageid="a4bdb1a3-bf82-44be-93de-9c017e2c445e" name="Stage1" type="ProcessInfo">
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="c246987f-23f6-401e-bd92-e663636fc0b5" name="Web BPTravel::Launch" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-60" />
+    <onsuccess>fab675d9-c180-47c1-a46f-46da43f64592</onsuccess>
+    <resource object="Web BPTravel" action="Launch" />
+  </stage>
+  <stage stageid="fab675d9-c180-47c1-a46f-46da43f64592" name="Login" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-15" />
+    <onsuccess>1ae9b42e-78fb-48f0-b4f2-4b030a079690</onsuccess>
+    <resource object="Web BPTravel" action="Login" />
+  </stage>
+</process>

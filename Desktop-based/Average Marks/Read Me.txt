@@ -1,0 +1,2 @@
+This directory contains a sample excel workbook of students with marks in certain subjects. RPA is used to copy the data into a collection, calculate the average marks obtained by the student (row average) and the average marks obtained in each subject (column average). It also calculates the grade of each student based on the marks obtained (numeric to text conversion).
+It also writes data into another worksheet within the excel file.
