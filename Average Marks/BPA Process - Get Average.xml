@@ -1,0 +1,480 @@
+﻿<process name="Get Average" version="1.0" bpversion="6.7.1.21315" narrative="" byrefcollection="true" preferredid="2664cd5d-5e11-417c-bf67-2a899800e97f" published="true">
+  <view>
+    <camerax>0</camerax>
+    <cameray>11</cameray>
+    <zoom version="2">1.25</zoom>
+  </view>
+  <preconditions />
+  <endpoint narrative="" />
+  <subsheet subsheetid="65901bcb-aebc-415d-8b65-c18aaa34dd94" type="Normal" published="False">
+    <name>Loop</name>
+    <view>
+      <camerax>0</camerax>
+      <cameray>60</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <subsheet subsheetid="d2322e46-3ff7-4cc1-844f-a4affe1f56bf" type="Normal" published="False">
+    <name>Read Excel</name>
+    <view>
+      <camerax>0</camerax>
+      <cameray>0</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <subsheet subsheetid="a99cf0e3-0eb3-4588-a90b-25f255e31d3a" type="Normal" published="False">
+    <name>Averaging</name>
+    <view>
+      <camerax>0</camerax>
+      <cameray>0</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <subsheet subsheetid="2ef7d742-edfb-4d09-8fda-1343667197a1" type="Normal" published="False">
+    <name>Close Excel</name>
+    <view>
+      <camerax>0</camerax>
+      <cameray>0</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <subsheet subsheetid="6a480e59-efce-4b9b-bfa6-8aba36e1d3c2" type="Normal" published="False">
+    <name>To Number</name>
+    <view>
+      <camerax>0</camerax>
+      <cameray>0</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <subsheet subsheetid="4684b928-c4f6-4249-a568-adb42389b51f" type="Normal" published="False">
+    <name>Write Excel</name>
+    <view>
+      <camerax>0</camerax>
+      <cameray>0</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <subsheet subsheetid="97286c47-01df-4cff-908c-15aa46ee7326" type="Normal" published="False">
+    <name>final write</name>
+    <view>
+      <camerax>0</camerax>
+      <cameray>0</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <stage stageid="02b9c5e9-e371-4f06-b322-01a30a9a3325" name="Start" type="Start">
+    <display x="15" y="-180" />
+    <onsuccess>44e50e7c-8634-480e-84c0-3c6e54298d22</onsuccess>
+  </stage>
+  <stage stageid="e5303db5-e363-46e5-ba39-6f29fe688991" name="End" type="End">
+    <display x="15" y="120" />
+  </stage>
+  <stage stageid="482d912c-2280-45ab-812f-b5243c98e7a5" name="Stage1" type="ProcessInfo">
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="32bc0d31-fb64-44a0-94fe-c6a08f9f8b4a" name="Averages" type="Collection">
+    <display x="-195" y="-30" />
+    <datatype>collection</datatype>
+    <alwaysinit />
+  </stage>
+  <stage stageid="0f43901a-d879-40d6-bde8-b84f63efdd81" name="Read Excel" type="SubSheetInfo">
+    <subsheetid>d2322e46-3ff7-4cc1-844f-a4affe1f56bf</subsheetid>
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="70972bb8-34a6-4252-a9ec-3328b6a02f24" name="Start" type="Start">
+    <subsheetid>d2322e46-3ff7-4cc1-844f-a4affe1f56bf</subsheetid>
+    <display x="-15" y="-195" />
+    <onsuccess>4cd28d2a-2227-4325-af22-412f135d027b</onsuccess>
+  </stage>
+  <stage stageid="a6b61ed4-f7aa-4b46-a4ee-53e644ecbbb5" name="End" type="End">
+    <subsheetid>d2322e46-3ff7-4cc1-844f-a4affe1f56bf</subsheetid>
+    <display x="-15" y="0" />
+  </stage>
+  <stage stageid="4cd28d2a-2227-4325-af22-412f135d027b" name="Create Instance" type="Action">
+    <subsheetid>d2322e46-3ff7-4cc1-844f-a4affe1f56bf</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="-15" y="-150" />
+    <inputs>
+      <input type="flag" name="Enable Events" friendlyname="Enable Events" narrative="Flag to indicate that events should be enabled / disabled on the attached instance - defaulted to True" expr="True" />
+    </inputs>
+    <outputs>
+      <output type="number" name="handle" friendlyname="handle" narrative="An integer which can be used to identify the created instance in subsequent actions" stage="handle" />
+    </outputs>
+    <onsuccess>768d2561-b4ca-4d2b-8c31-e0089f7afea6</onsuccess>
+    <resource object="MS Excel VBO" action="Create Instance" />
+  </stage>
+  <stage stageid="768d2561-b4ca-4d2b-8c31-e0089f7afea6" name="Open Workbook" type="Action">
+    <subsheetid>d2322e46-3ff7-4cc1-844f-a4affe1f56bf</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="-15" y="-105" />
+    <inputs>
+      <input type="number" name="handle" friendlyname="handle" narrative="The integer handle identifying the instance on which the required workbook should be opened. The default of zero indicates the currently active instance." expr="[handle]" />
+      <input type="text" name="File name" friendlyname="File name" narrative="The path and name of the file which should be opened." expr="&quot;C:\Users\Administrator\Desktop\RPA\Student Marks.xlsx&quot;" />
+    </inputs>
+    <outputs>
+      <output type="text" name="Workbook Name" friendlyname="Workbook Name" narrative="The name used by Excel to identify the workbook - usually this is the file name (without the path)." stage="Workbook Name" />
+    </outputs>
+    <onsuccess>35283912-6f1e-42b2-8a9c-559adceedc3e</onsuccess>
+    <resource object="MS Excel VBO" action="Open Workbook" />
+  </stage>
+  <stage stageid="35283912-6f1e-42b2-8a9c-559adceedc3e" name="Get Collection" type="Action">
+    <subsheetid>d2322e46-3ff7-4cc1-844f-a4affe1f56bf</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="-15" y="-60" />
+    <inputs>
+      <input type="number" name="handle" friendlyname="handle" narrative="The integer handle identifying the instance on which the worksheet which should be retrieved resides. The default of zero indicates the currently active instance." expr="[handle]" />
+      <input type="text" name="Workbook Name" friendlyname="Workbook Name" narrative="The name of the workbook which contains the sheet required. The default empty text indicates the currently active workbook on the specified instance." expr="[Workbook Name]" />
+      <input type="text" name="Worksheet Name" friendlyname="Worksheet Name" narrative="The name of the worksheet within the specified workbook which should be written to a collection. The default empty text indicates the currently active worksheet within the specified workbook." expr="&quot;Sheet3&quot;" />
+    </inputs>
+    <outputs>
+      <output type="collection" name="Data" friendlyname="Data" narrative="The collection containing the data from the specified worksheet - the column IDs will be gleaned from the first row on the sheet being retrieved." stage="Averages" />
+    </outputs>
+    <onsuccess>a6b61ed4-f7aa-4b46-a4ee-53e644ecbbb5</onsuccess>
+    <resource object="MS Excel VBO" action="Get Worksheet As Collection" />
+  </stage>
+  <stage stageid="c0e6c6e7-2232-413f-8612-997fcb74f169" name="handle" type="Data">
+    <subsheetid>d2322e46-3ff7-4cc1-844f-a4affe1f56bf</subsheetid>
+    <display x="-180" y="-225" />
+    <datatype>number</datatype>
+    <initialvalue />
+    <alwaysinit />
+  </stage>
+  <stage stageid="c97095fe-1661-412e-9dcc-95dea29ec7b7" name="Workbook Name" type="Data">
+    <subsheetid>d2322e46-3ff7-4cc1-844f-a4affe1f56bf</subsheetid>
+    <display x="-180" y="-180" />
+    <datatype>text</datatype>
+    <initialvalue />
+    <alwaysinit />
+  </stage>
+  <stage stageid="44e50e7c-8634-480e-84c0-3c6e54298d22" name="Read Excel" type="SubSheet">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-120" />
+    <onsuccess>56db2da3-803f-4c24-9f05-de042dfd6525</onsuccess>
+    <processid>d2322e46-3ff7-4cc1-844f-a4affe1f56bf</processid>
+  </stage>
+  <stage stageid="22355a18-e574-405a-b293-e8a21774b7d0" name="Loop" type="SubSheetInfo">
+    <subsheetid>65901bcb-aebc-415d-8b65-c18aaa34dd94</subsheetid>
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="e171d5c9-9532-4c88-810d-e875c257f68c" name="Start" type="Start">
+    <subsheetid>65901bcb-aebc-415d-8b65-c18aaa34dd94</subsheetid>
+    <display x="15" y="-240" />
+    <onsuccess>3db048d7-49f8-41df-b586-e4fb27bfc53b</onsuccess>
+  </stage>
+  <stage stageid="15ca792a-40bc-4a2f-9600-20a37432ff61" name="End" type="End">
+    <subsheetid>65901bcb-aebc-415d-8b65-c18aaa34dd94</subsheetid>
+    <display x="15" y="240" />
+  </stage>
+  <stage stageid="3db048d7-49f8-41df-b586-e4fb27bfc53b" name="Loop Start1" type="LoopStart">
+    <subsheetid>65901bcb-aebc-415d-8b65-c18aaa34dd94</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-180" />
+    <onsuccess>b9fa3e67-f9cf-4336-9f19-bf3906a4a242</onsuccess>
+    <groupid>67d61f6c-6b0f-4439-b383-198ee67c23e2</groupid>
+    <looptype>ForEach</looptype>
+    <loopdata>Averages</loopdata>
+  </stage>
+  <stage stageid="081bf9a7-02f6-4d07-a8b0-da2dacffc603" name="Loop End1" type="LoopEnd">
+    <subsheetid>65901bcb-aebc-415d-8b65-c18aaa34dd94</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="60" />
+    <onsuccess>41ff9f9e-47c0-4b5e-9cc1-0e79baac87f7</onsuccess>
+    <groupid>67d61f6c-6b0f-4439-b383-198ee67c23e2</groupid>
+  </stage>
+  <stage stageid="241a6a9b-a65e-4070-b250-4fdefe8e99a2" name="Averaging" type="SubSheetInfo">
+    <subsheetid>a99cf0e3-0eb3-4588-a90b-25f255e31d3a</subsheetid>
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="fccf3b0d-9099-4cd5-ae71-e5ff2a594035" name="Start" type="Start">
+    <subsheetid>a99cf0e3-0eb3-4588-a90b-25f255e31d3a</subsheetid>
+    <display x="15" y="-150" />
+    <onsuccess>df0270c6-f011-4eb6-bc0b-cc1dd7553848</onsuccess>
+  </stage>
+  <stage stageid="79936929-737f-4781-ac51-9946938a467b" name="End" type="End">
+    <subsheetid>a99cf0e3-0eb3-4588-a90b-25f255e31d3a</subsheetid>
+    <display x="15" y="30" />
+  </stage>
+  <stage stageid="8baa01f8-b85c-4a50-88aa-2452996104ed" name="Averaging" type="SubSheet">
+    <subsheetid>65901bcb-aebc-415d-8b65-c18aaa34dd94</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-60" />
+    <onsuccess>ccd7520d-9f25-4f35-a8b6-caadab908053</onsuccess>
+    <processid>a99cf0e3-0eb3-4588-a90b-25f255e31d3a</processid>
+  </stage>
+  <stage stageid="56db2da3-803f-4c24-9f05-de042dfd6525" name="Loop" type="SubSheet">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-60" />
+    <onsuccess>faefb50a-ab0d-4a31-8f9b-9bd17d0ed83c</onsuccess>
+    <processid>65901bcb-aebc-415d-8b65-c18aaa34dd94</processid>
+  </stage>
+  <stage stageid="7c8b5a8e-7090-4081-a183-b5549573e140" name="Close Excel" type="SubSheetInfo">
+    <subsheetid>2ef7d742-edfb-4d09-8fda-1343667197a1</subsheetid>
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="5f4b3ba4-9bdb-4204-8845-2fd97ab81819" name="Start" type="Start">
+    <subsheetid>2ef7d742-edfb-4d09-8fda-1343667197a1</subsheetid>
+    <display x="15" y="-105" />
+    <onsuccess>86bfff3b-6250-48ed-b509-99214bff23d9</onsuccess>
+  </stage>
+  <stage stageid="958bc5ff-e787-4d8f-bb00-b377bd8012bf" name="End" type="End">
+    <subsheetid>2ef7d742-edfb-4d09-8fda-1343667197a1</subsheetid>
+    <display x="15" y="90" />
+  </stage>
+  <stage stageid="faefb50a-ab0d-4a31-8f9b-9bd17d0ed83c" name="Close Excel" type="SubSheet">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="0" />
+    <onsuccess>d9e22400-5c41-47ba-87b5-31c55e84bbc4</onsuccess>
+    <processid>2ef7d742-edfb-4d09-8fda-1343667197a1</processid>
+  </stage>
+  <stage stageid="86bfff3b-6250-48ed-b509-99214bff23d9" name="Close Workbook" type="Action">
+    <subsheetid>2ef7d742-edfb-4d09-8fda-1343667197a1</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-45" />
+    <inputs>
+      <input type="number" name="handle" friendlyname="handle" narrative="The integer handle identifying the instance on which the workbook which should be closed resides. The default of zero indicates the currently active instance." expr="[handle]" />
+      <input type="text" name="Workbook Name" friendlyname="Workbook Name" narrative="The name of the workbook which should be closed." expr="[Workbook Name]" />
+      <input type="flag" name="Save Data" friendlyname="Save Data" narrative="True to save the data before closing the workbook; The default of False will discard any changes before closing the workbook." expr="True" />
+    </inputs>
+    <onsuccess>958bc5ff-e787-4d8f-bb00-b377bd8012bf</onsuccess>
+    <resource object="MS Excel VBO" action="Close Workbook" />
+  </stage>
+  <stage stageid="1d9075e8-c26e-419c-8ad2-cf2a44eab146" name="To Number" type="SubSheetInfo">
+    <subsheetid>6a480e59-efce-4b9b-bfa6-8aba36e1d3c2</subsheetid>
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="94736e01-d17a-4c3e-bd02-4d87cb5ed6fc" name="Start" type="Start">
+    <subsheetid>6a480e59-efce-4b9b-bfa6-8aba36e1d3c2</subsheetid>
+    <display x="15" y="-105" />
+    <onsuccess>20da0628-c220-447a-940c-7bdd58828200</onsuccess>
+  </stage>
+  <stage stageid="9587a18e-22a1-4d70-bcda-1c576ae405f6" name="End" type="End">
+    <subsheetid>6a480e59-efce-4b9b-bfa6-8aba36e1d3c2</subsheetid>
+    <display x="15" y="90" />
+  </stage>
+  <stage stageid="df0270c6-f011-4eb6-bc0b-cc1dd7553848" name="To Number" type="SubSheet">
+    <subsheetid>a99cf0e3-0eb3-4588-a90b-25f255e31d3a</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-90" />
+    <onsuccess>f30a513a-1321-4110-b126-dc024a914383</onsuccess>
+    <processid>6a480e59-efce-4b9b-bfa6-8aba36e1d3c2</processid>
+  </stage>
+  <stage stageid="20da0628-c220-447a-940c-7bdd58828200" name="Multi1" type="MultipleCalculation">
+    <subsheetid>6a480e59-efce-4b9b-bfa6-8aba36e1d3c2</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-15" />
+    <onsuccess>9587a18e-22a1-4d70-bcda-1c576ae405f6</onsuccess>
+    <steps>
+      <calculation expression="ToNumber([Averages.ML])" stage="ML" />
+      <calculation expression="ToNumber([Averages.Spark])" stage="Spark" />
+      <calculation expression="ToNumber([Averages.RPA])" stage="RPA" />
+    </steps>
+  </stage>
+  <stage stageid="02d6f085-724b-41cb-a62e-9950073c474e" name="ML" type="Data">
+    <subsheetid>6a480e59-efce-4b9b-bfa6-8aba36e1d3c2</subsheetid>
+    <display x="-135" y="75" />
+    <datatype>number</datatype>
+    <initialvalue />
+    <alwaysinit />
+  </stage>
+  <stage stageid="1dc7819b-816c-45f9-b2ba-148101181d2c" name="Spark" type="Data">
+    <subsheetid>6a480e59-efce-4b9b-bfa6-8aba36e1d3c2</subsheetid>
+    <display x="-135" y="30" />
+    <datatype>number</datatype>
+    <initialvalue />
+    <alwaysinit />
+  </stage>
+  <stage stageid="36cb9a1e-3a77-4804-a6b8-34bcda57138c" name="RPA" type="Data">
+    <subsheetid>6a480e59-efce-4b9b-bfa6-8aba36e1d3c2</subsheetid>
+    <display x="-135" y="-15" />
+    <datatype>number</datatype>
+    <initialvalue />
+    <alwaysinit />
+  </stage>
+  <stage stageid="b418f077-5b0c-441b-9fd5-ccde5c01dc23" name="Write Excel" type="SubSheetInfo">
+    <subsheetid>4684b928-c4f6-4249-a568-adb42389b51f</subsheetid>
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="fe5cdff7-db45-4518-896f-dbd5b1c35a20" name="Start" type="Start">
+    <subsheetid>4684b928-c4f6-4249-a568-adb42389b51f</subsheetid>
+    <display x="15" y="-105" />
+    <onsuccess>71c4c66a-dee8-421d-88dd-6a5164852f16</onsuccess>
+  </stage>
+  <stage stageid="5a8dba21-00b3-4eef-a250-6c8e4a8181bd" name="End" type="End">
+    <subsheetid>4684b928-c4f6-4249-a568-adb42389b51f</subsheetid>
+    <display x="15" y="90" />
+  </stage>
+  <stage stageid="16620f6f-c244-41d6-887c-c03bedd5991f" name="MS Excel VBO::Set Cell Value" type="Action">
+    <subsheetid>4684b928-c4f6-4249-a568-adb42389b51f</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="15" />
+    <inputs>
+      <input type="number" name="handle" friendlyname="handle" narrative="The integer handle identifying the instance on which the required cell value should be set. The default of zero indicates the currently active instance." expr="[handle]" />
+      <input type="text" name="Cell Reference" friendlyname="Cell Reference" narrative="The reference on the speficied sheet identifying the cell which should be set." expr="&quot;D&quot; &amp; [itr]" />
+      <input type="text" name="Value" friendlyname="Value" narrative="The value to which the specified cell should be set." expr="[Avg]" />
+    </inputs>
+    <onsuccess>5a8dba21-00b3-4eef-a250-6c8e4a8181bd</onsuccess>
+    <resource object="MS Excel VBO" action="Set Cell Value" />
+  </stage>
+  <stage stageid="a4146178-f695-46b4-ade1-1dc117511f20" name="Avg" type="Data">
+    <subsheetid>a99cf0e3-0eb3-4588-a90b-25f255e31d3a</subsheetid>
+    <display x="-180" y="-15" />
+    <datatype>number</datatype>
+    <initialvalue />
+    <alwaysinit />
+  </stage>
+  <stage stageid="d79315ac-22ce-40cc-a84e-e8ba4a8c0b76" name="itr" type="Data">
+    <subsheetid>4684b928-c4f6-4249-a568-adb42389b51f</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="-210" y="0" />
+    <datatype>number</datatype>
+    <initialvalue>1</initialvalue>
+  </stage>
+  <stage stageid="ccd7520d-9f25-4f35-a8b6-caadab908053" name="Write Excel" type="SubSheet">
+    <subsheetid>65901bcb-aebc-415d-8b65-c18aaa34dd94</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="0" />
+    <onsuccess>081bf9a7-02f6-4d07-a8b0-da2dacffc603</onsuccess>
+    <processid>4684b928-c4f6-4249-a568-adb42389b51f</processid>
+  </stage>
+  <stage stageid="b9fa3e67-f9cf-4336-9f19-bf3906a4a242" name="Calc1" type="Calculation">
+    <subsheetid>65901bcb-aebc-415d-8b65-c18aaa34dd94</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-120" />
+    <onsuccess>8baa01f8-b85c-4a50-88aa-2452996104ed</onsuccess>
+    <calculation expression="[itr] + 1" stage="itr" />
+  </stage>
+  <stage stageid="71c4c66a-dee8-421d-88dd-6a5164852f16" name="MS Excel VBO::Show" type="Action">
+    <subsheetid>4684b928-c4f6-4249-a568-adb42389b51f</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-45" />
+    <inputs>
+      <input type="number" name="handle" friendlyname="handle" narrative="The integer handle identifying the instance which should have its window displayed. The default of zero indicates the currently active instance." expr="[handle]" />
+    </inputs>
+    <onsuccess>16620f6f-c244-41d6-887c-c03bedd5991f</onsuccess>
+    <resource object="MS Excel VBO" action="Show" />
+  </stage>
+  <stage stageid="f30a513a-1321-4110-b126-dc024a914383" name="Multi2" type="MultipleCalculation">
+    <subsheetid>a99cf0e3-0eb3-4588-a90b-25f255e31d3a</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-30" />
+    <onsuccess>79936929-737f-4781-ac51-9946938a467b</onsuccess>
+    <steps>
+      <calculation expression="([ML] + [Spark] + [RPA])/3" stage="Avg" />
+      <calculation expression="[ML] + [TotalML]" stage="TotalML" />
+      <calculation expression="[Spark] + [TotalSpark]" stage="TotalSpark" />
+      <calculation expression="[RPA] + [TotalRPA]" stage="TotalRPA" />
+    </steps>
+  </stage>
+  <stage stageid="0c922af9-205b-4b4e-a6aa-a39683394167" name="TotalML" type="Data">
+    <subsheetid>a99cf0e3-0eb3-4588-a90b-25f255e31d3a</subsheetid>
+    <display x="-180" y="120" />
+    <datatype>number</datatype>
+    <initialvalue>0</initialvalue>
+  </stage>
+  <stage stageid="8c21d01d-e22b-4972-9cb3-9b6923403222" name="TotalSpark" type="Data">
+    <subsheetid>a99cf0e3-0eb3-4588-a90b-25f255e31d3a</subsheetid>
+    <display x="-180" y="75" />
+    <datatype>number</datatype>
+    <initialvalue>0</initialvalue>
+  </stage>
+  <stage stageid="a79d1bca-38ca-44fb-b767-71e61903708d" name="TotalRPA" type="Data">
+    <subsheetid>a99cf0e3-0eb3-4588-a90b-25f255e31d3a</subsheetid>
+    <display x="-180" y="30" />
+    <datatype>number</datatype>
+    <initialvalue>0</initialvalue>
+  </stage>
+  <stage stageid="41ff9f9e-47c0-4b5e-9cc1-0e79baac87f7" name="Multi3" type="MultipleCalculation">
+    <subsheetid>65901bcb-aebc-415d-8b65-c18aaa34dd94</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="120" />
+    <onsuccess>c41074ed-b0f3-4111-bbb4-e54cfed9404f</onsuccess>
+    <steps>
+      <calculation expression="[TotalML]/([itr] -1)" stage="AvgML" />
+      <calculation expression="[TotalRPA]/([itr] -1)" stage="AvgRPA" />
+      <calculation expression="[TotalSpark]/([itr] -1)" stage="AvgSpark" />
+    </steps>
+  </stage>
+  <stage stageid="a4802ef1-ffc7-42c1-bf08-4c1c3013b653" name="AvgML" type="Data">
+    <subsheetid>65901bcb-aebc-415d-8b65-c18aaa34dd94</subsheetid>
+    <display x="-195" y="30" />
+    <datatype>number</datatype>
+    <initialvalue />
+    <alwaysinit />
+  </stage>
+  <stage stageid="b621574f-5e74-4d19-a71c-890ab8229baf" name="AvgSpark" type="Data">
+    <subsheetid>65901bcb-aebc-415d-8b65-c18aaa34dd94</subsheetid>
+    <display x="-195" y="-15" />
+    <datatype>number</datatype>
+    <initialvalue />
+    <alwaysinit />
+  </stage>
+  <stage stageid="e1499152-9cd0-40f0-bf75-947dba5f77f4" name="AvgRPA" type="Data">
+    <subsheetid>65901bcb-aebc-415d-8b65-c18aaa34dd94</subsheetid>
+    <display x="-195" y="75" />
+    <datatype>number</datatype>
+    <initialvalue />
+    <alwaysinit />
+  </stage>
+  <stage stageid="bb87f08f-93cd-49b8-9378-b5e767767ebd" name="final write" type="SubSheetInfo">
+    <subsheetid>97286c47-01df-4cff-908c-15aa46ee7326</subsheetid>
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="e32cef2f-c473-43d1-b5fa-f9946b4cd1a7" name="Start" type="Start">
+    <subsheetid>97286c47-01df-4cff-908c-15aa46ee7326</subsheetid>
+    <display x="15" y="-105" />
+    <onsuccess>19634923-19a9-4b08-a0b6-bdb7e7f02c50</onsuccess>
+  </stage>
+  <stage stageid="4f238022-8940-4bbc-9033-7a8b144ffadc" name="End" type="End">
+    <subsheetid>97286c47-01df-4cff-908c-15aa46ee7326</subsheetid>
+    <display x="15" y="90" />
+  </stage>
+  <stage stageid="c41074ed-b0f3-4111-bbb4-e54cfed9404f" name="final write" type="SubSheet">
+    <subsheetid>65901bcb-aebc-415d-8b65-c18aaa34dd94</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="180" />
+    <onsuccess>15ca792a-40bc-4a2f-9600-20a37432ff61</onsuccess>
+    <processid>97286c47-01df-4cff-908c-15aa46ee7326</processid>
+  </stage>
+  <stage stageid="19634923-19a9-4b08-a0b6-bdb7e7f02c50" name="MS Excel VBO::Set Cell Value" type="Action">
+    <subsheetid>97286c47-01df-4cff-908c-15aa46ee7326</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-60" />
+    <inputs>
+      <input type="number" name="handle" friendlyname="handle" narrative="The integer handle identifying the instance on which the required cell value should be set. The default of zero indicates the currently active instance." expr="[handle]" />
+      <input type="text" name="Cell Reference" friendlyname="Cell Reference" narrative="The reference on the speficied sheet identifying the cell which should be set." expr="&quot;A&quot; &amp; [itr] + 2" />
+      <input type="text" name="Value" friendlyname="Value" narrative="The value to which the specified cell should be set." expr="[AvgML]" />
+    </inputs>
+    <onsuccess>d939d0ad-73da-42de-a568-f4b22f4d0387</onsuccess>
+    <resource object="MS Excel VBO" action="Set Cell Value" />
+  </stage>
+  <stage stageid="d939d0ad-73da-42de-a568-f4b22f4d0387" name="MS Excel VBO::Set Cell Value" type="Action">
+    <subsheetid>97286c47-01df-4cff-908c-15aa46ee7326</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-15" />
+    <inputs>
+      <input type="number" name="handle" friendlyname="handle" narrative="The integer handle identifying the instance on which the required cell value should be set. The default of zero indicates the currently active instance." expr="[handle]" />
+      <input type="text" name="Cell Reference" friendlyname="Cell Reference" narrative="The reference on the speficied sheet identifying the cell which should be set." expr="&quot;B&quot; &amp; [itr] + 2" />
+      <input type="text" name="Value" friendlyname="Value" narrative="The value to which the specified cell should be set." expr="[AvgSpark]" />
+    </inputs>
+    <onsuccess>fdcb71d6-7a2b-4a92-aed6-667b9d6bc43f</onsuccess>
+    <resource object="MS Excel VBO" action="Set Cell Value" />
+  </stage>
+  <stage stageid="fdcb71d6-7a2b-4a92-aed6-667b9d6bc43f" name="MS Excel VBO::Set Cell Value" type="Action">
+    <subsheetid>97286c47-01df-4cff-908c-15aa46ee7326</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="30" />
+    <inputs>
+      <input type="number" name="handle" friendlyname="handle" narrative="The integer handle identifying the instance on which the required cell value should be set. The default of zero indicates the currently active instance." expr="[handle]" />
+      <input type="text" name="Cell Reference" friendlyname="Cell Reference" narrative="The reference on the speficied sheet identifying the cell which should be set." expr="&quot;C&quot; &amp; [itr] + 2" />
+      <input type="text" name="Value" friendlyname="Value" narrative="The value to which the specified cell should be set." expr="[AvgRPA]" />
+    </inputs>
+    <onsuccess>4f238022-8940-4bbc-9033-7a8b144ffadc</onsuccess>
+    <resource object="MS Excel VBO" action="Set Cell Value" />
+  </stage>
+  <stage stageid="d9e22400-5c41-47ba-87b5-31c55e84bbc4" name="Set Grades" type="Process">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="60" />
+    <onsuccess>e5303db5-e363-46e5-ba39-6f29fe688991</onsuccess>
+    <processid>6822550e-8e98-46f3-a8ce-81b3cc4a0a57</processid>
+  </stage>
+</process>

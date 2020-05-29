@@ -1,0 +1,55 @@
+﻿<process name="Launch Calci" version="1.0" bpversion="6.7.1.21315" narrative="" byrefcollection="true" preferredid="11871d9c-6f52-4425-ac7d-78d4ddda7fd5">
+  <view>
+    <camerax>0</camerax>
+    <cameray>150</cameray>
+    <zoom version="2">1.25</zoom>
+  </view>
+  <preconditions />
+  <endpoint narrative="" />
+  <stage stageid="be8994cf-f89a-4c56-91da-882a67b51ede" name="Start" type="Start">
+    <display x="15" y="-270" />
+    <onsuccess>caf18e8c-2dfd-462c-9238-5c4fd355db8d</onsuccess>
+  </stage>
+  <stage stageid="4cfdb4e9-436e-4aa7-b594-79b7ed623d9a" name="End" type="End">
+    <display x="15" y="150" />
+  </stage>
+  <stage stageid="491b0dc6-baba-4b61-90bb-6e88af117ee1" name="Stage1" type="ProcessInfo">
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="caf18e8c-2dfd-462c-9238-5c4fd355db8d" name="Launch" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-210" />
+    <onsuccess>1b80aa03-b2bd-48d2-841b-499e4a4d445b</onsuccess>
+    <resource object="Desktop Calci" action="Launch" />
+  </stage>
+  <stage stageid="1b80aa03-b2bd-48d2-841b-499e4a4d445b" name="Desktop Calci::Button 1" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-150" />
+    <onsuccess>2b7a7147-17f0-4dc4-9b3b-1f62da99f278</onsuccess>
+    <resource object="Desktop Calci" action="Button 7" />
+  </stage>
+  <stage stageid="2b7a7147-17f0-4dc4-9b3b-1f62da99f278" name="Desktop Calci::Plus" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-90" />
+    <onsuccess>edb2de36-af64-4040-9502-3faf7cc5e8e8</onsuccess>
+    <resource object="Desktop Calci" action="Plus" />
+  </stage>
+  <stage stageid="edb2de36-af64-4040-9502-3faf7cc5e8e8" name="Desktop Calci::Button 5" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-30" />
+    <onsuccess>bb25fad7-7f75-430c-b1a6-db4f4dc3116a</onsuccess>
+    <resource object="Desktop Calci" action="Button 5" />
+  </stage>
+  <stage stageid="bb25fad7-7f75-430c-b1a6-db4f4dc3116a" name="Desktop Calci::Equal" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="30" />
+    <onsuccess>6d728f68-71f0-4c86-a1c6-7b897da985da</onsuccess>
+    <resource object="Desktop Calci" action="Equal" />
+  </stage>
+  <stage stageid="6d728f68-71f0-4c86-a1c6-7b897da985da" name="Desktop Calci::Terminate" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="90" />
+    <onsuccess>4cfdb4e9-436e-4aa7-b594-79b7ed623d9a</onsuccess>
+    <resource object="Desktop Calci" action="Terminate" />
+  </stage>
+</process>

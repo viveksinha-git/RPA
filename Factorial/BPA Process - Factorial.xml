@@ -1,0 +1,63 @@
+﻿<process name="Factorial" version="1.0" bpversion="6.7.1.21315" narrative="Factorial" byrefcollection="true" preferredid="d52b6def-0601-4a4e-b595-c413d1e61633">
+  <view>
+    <camerax>0</camerax>
+    <cameray>0</cameray>
+    <zoom version="2">1.25</zoom>
+  </view>
+  <preconditions />
+  <endpoint narrative="" />
+  <stage stageid="be126311-89b5-48fc-b1df-1fcf2139733c" name="Stage1" type="ProcessInfo">
+    <display x="-210" y="-90" w="150" h="90" />
+  </stage>
+  <stage stageid="b04fc802-138d-45a4-945b-edc9d14e480a" name="Start" type="Start">
+    <display x="45" y="-135" />
+    <onsuccess>c9808448-b18b-49da-9c64-ea1c5dbea9af</onsuccess>
+  </stage>
+  <stage stageid="d8be5b69-5cb3-4254-8edb-c861dfa451f5" name="End" type="End">
+    <display x="-45" y="-75" />
+  </stage>
+  <stage stageid="cc133243-13ea-465b-8664-7898a74632cd" name="Multiply" type="Calculation">
+    <loginhibit onsuccess="true" />
+    <display x="45" y="15" />
+    <onsuccess>efbf636a-73fc-4ca9-b132-e42ac805fd88</onsuccess>
+    <calculation expression="[temp]*[initial]" stage="temp" />
+  </stage>
+  <stage stageid="4edd1bdb-bed2-489e-972e-0c0f6fcd6a5e" name="initial" type="Data">
+    <loginhibit onsuccess="true" />
+    <display x="195" y="-45" />
+    <datatype>number</datatype>
+    <initialvalue>5</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="d3512295-0a5f-450b-9524-855b5c423348" name="temp" type="Data">
+    <loginhibit onsuccess="true" />
+    <display x="195" y="15" />
+    <datatype>number</datatype>
+    <initialvalue>1</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="efbf636a-73fc-4ca9-b132-e42ac805fd88" name="Calc1" type="Calculation">
+    <loginhibit onsuccess="true" />
+    <display x="45" y="90" />
+    <onsuccess>cb1266d7-443d-4cbb-b2de-943a459ac212</onsuccess>
+    <calculation expression="[initial]-1" stage="initial" />
+  </stage>
+  <stage stageid="cb1266d7-443d-4cbb-b2de-943a459ac212" name="Anchor1" type="Anchor">
+    <loginhibit onsuccess="true" />
+    <display x="120" y="90" w="10" h="10" />
+    <onsuccess>2f83c305-4ad2-4243-99a6-165d31265e48</onsuccess>
+  </stage>
+  <stage stageid="2f83c305-4ad2-4243-99a6-165d31265e48" name="Anchor2" type="Anchor">
+    <loginhibit onsuccess="true" />
+    <display x="120" y="-75" w="10" h="10" />
+    <onsuccess>c9808448-b18b-49da-9c64-ea1c5dbea9af</onsuccess>
+  </stage>
+  <stage stageid="c9808448-b18b-49da-9c64-ea1c5dbea9af" name="Decision1" type="Decision">
+    <display x="45" y="-75" />
+    <decision expression="[initial] &gt; 0" />
+    <ontrue>cc133243-13ea-465b-8664-7898a74632cd</ontrue>
+    <onfalse>d8be5b69-5cb3-4254-8edb-c861dfa451f5</onfalse>
+  </stage>
+</process>
