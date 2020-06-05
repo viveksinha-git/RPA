@@ -1,0 +1,3 @@
+Centrix Data Solutions.bprelease file contains the process, business object, and the work queue to log in to Centrix Data Solutions software. It initiates the login feature, creates a new order after reading all the customer details from the CSV file.
+
+Additionally, the process and the object files have been uploaded separately.
