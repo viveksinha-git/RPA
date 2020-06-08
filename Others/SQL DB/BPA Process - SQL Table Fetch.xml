@@ -1,0 +1,84 @@
+﻿<process name="SQL Table Fetch" version="1.0" bpversion="6.7.1.21315" narrative="" byrefcollection="true" preferredid="d3172b28-864a-470f-9281-c549f58b6af1">
+  <view>
+    <camerax>0</camerax>
+    <cameray>-74</cameray>
+    <zoom version="2">1.25</zoom>
+  </view>
+  <preconditions />
+  <endpoint narrative="" />
+  <stage stageid="888b8c47-f018-4b55-bc4a-97fdcab91b88" name="Start" type="Start">
+    <display x="15" y="-180" />
+    <onsuccess>15668f78-96f0-4beb-afb5-6c34188759aa</onsuccess>
+  </stage>
+  <stage stageid="d2d538c9-a527-4168-8094-dc4202637730" name="End" type="End">
+    <display x="15" y="120" />
+  </stage>
+  <stage stageid="b17cef6a-07ca-442a-803c-69eb725aab5f" name="Stage1" type="ProcessInfo">
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="15668f78-96f0-4beb-afb5-6c34188759aa" name="Data - SQL Server::Configure" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-120" />
+    <inputs>
+      <input type="flag" name="Raise exception on any failure" friendlyname="Raise exception on any failure" narrative="Flag indicating if failure should cause an exception to be raised rather than a return of a success output value" expr="True" />
+    </inputs>
+    <onsuccess>47b27dbf-e3fc-46ba-9a02-72e527035da9</onsuccess>
+    <resource object="Data - SQL Server" action="Configure" />
+  </stage>
+  <stage stageid="47b27dbf-e3fc-46ba-9a02-72e527035da9" name="Data - SQL Server::Set Connection" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-60" />
+    <inputs>
+      <input type="text" name="Server" friendlyname="Server" narrative="The name of the server and, if necessary, instance name of the SQL Server instance to connect to" expr="&quot;Vivek&quot;" />
+      <input type="text" name="Database" friendlyname="Database" narrative="The name of the database to connect to" expr="&quot;BluePrism&quot;" />
+      <input type="text" name="User" friendlyname="User" narrative="If appropriate, the login name to use to connect to SQL Server. If left empty, windows authentication using the current user will be used instead of SQL Server authentication" expr="" />
+      <input type="password" name="Password" friendlyname="Password" narrative="If appropriate, the password to use with the above login name to access SQL Server. Unused for windows authentication" expr="" />
+    </inputs>
+    <onsuccess>cc241410-1a42-401a-85ee-ee8a7d3f893a</onsuccess>
+    <resource object="Data - SQL Server" action="Set Connection" />
+  </stage>
+  <stage stageid="cc241410-1a42-401a-85ee-ee8a7d3f893a" name="Data - SQL Server::Get Collection" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="0" />
+    <inputs>
+      <input type="text" name="SQL" friendlyname="SQL" narrative="The SQL query to use to perform this action" expr="&quot;select * from BluePrism.dbo.BPTable&quot;" />
+    </inputs>
+    <outputs>
+      <output type="flag" name="Success" friendlyname="Success" narrative="Flag indicating success (True) or failure (False)" stage="Success" />
+      <output type="text" name="Message" friendlyname="Message" narrative="Error message giving detail regarding why this action failed" stage="Message" />
+      <output type="collection" name="Results" friendlyname="Results" narrative="The collection of results from the query" stage="Results" />
+    </outputs>
+    <onsuccess>f26afb58-725d-40fa-84aa-a168f77e8639</onsuccess>
+    <resource object="Data - SQL Server" action="Get Collection" />
+  </stage>
+  <stage stageid="c18d5e65-f089-4de5-85da-e1b75c39a4c1" name="Success" type="Data">
+    <display x="-195" y="30" />
+    <datatype>flag</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="7f2005dc-b499-443e-8190-303133c87695" name="Message" type="Data">
+    <display x="-195" y="-15" />
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="233dfab2-1c13-4e68-91ff-ac0c4bc9a689" name="Results" type="Collection">
+    <display x="-195" y="75" />
+    <datatype>collection</datatype>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="f26afb58-725d-40fa-84aa-a168f77e8639" name="Data - SQL Server::Close" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="60" />
+    <outputs>
+      <output type="flag" name="Success" friendlyname="Success" narrative="Flag indicating success (True) or failure (False)" stage="" />
+      <output type="text" name="Message" friendlyname="Message" narrative="Error message giving detail regarding why this action failed" stage="" />
+    </outputs>
+    <onsuccess>d2d538c9-a527-4168-8094-dc4202637730</onsuccess>
+    <resource object="Data - SQL Server" action="Close" />
+  </stage>
+</process>
